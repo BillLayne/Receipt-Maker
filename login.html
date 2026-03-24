@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bill Layne Insurance - Receipt Maker Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .login-container {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+    .login-logo { margin-bottom: 20px; }
+    .login-logo img { max-width: 200px; height: auto; }
+    .login-container h1 {
+      font-size: 22px; color: #004080; margin-bottom: 6px;
+    }
+    .login-container p {
+      font-size: 14px; color: #666; margin-bottom: 24px;
+    }
+    .login-container label {
+      display: block; font-weight: 600; font-size: 13px;
+      color: #555; margin-bottom: 6px; text-align: left;
+    }
+    .login-container input {
+      width: 100%; padding: 14px 16px;
+      border: 2px solid #ccc; border-radius: 8px;
+      font-size: 18px; text-align: center;
+      letter-spacing: 8px; margin-bottom: 20px;
+      transition: border-color 0.2s;
+    }
+    .login-container input:focus {
+      outline: none; border-color: #004080;
+      box-shadow: 0 0 0 3px rgba(0,64,128,0.15);
+    }
+    .login-btn {
+      width: 100%; padding: 14px;
+      background: linear-gradient(180deg, #004080 0%, #003060 100%);
+      color: white; border: none; border-radius: 8px;
+      font-size: 16px; font-weight: 600; cursor: pointer;
+      transition: all 0.2s;
+      display: flex; align-items: center;
+      justify-content: center; gap: 8px;
+    }
+    .login-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .error-msg {
+      color: #dc3545; font-size: 14px; font-weight: 600;
+      margin-top: 12px; display: none;
+    }
+    .footer-text {
+      margin-top: 24px; font-size: 11px; color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-logo">
+      <img src="https://i.imgur.com/lxu9nfT.png" alt="Bill Layne Insurance" />
+    </div>
+    <h1>Receipt Maker</h1>
+    <p>Enter your access code to continue</p>
+    <form onsubmit="return checkCode()">
+      <label for="accessCode"><i class="fas fa-lock"></i> Access Code</label>
+      <input type="password" id="accessCode" maxlength="4" placeholder="••••" autofocus />
+      <button type="submit" class="login-btn">
+        <i class="fas fa-sign-in-alt"></i> Enter
+      </button>
+    </form>
+    <div class="error-msg" id="errorMsg">
+      <i class="fas fa-exclamation-triangle"></i> Incorrect access code. Please try again.
+    </div>
+    <div class="footer-text">
+      Bill Layne Insurance Agency<br/>
+      1283 N Bridge St, Elkin, NC 28621 &bull; (336) 835-1993<br/>
+      BillLayneInsurance.com
+    </div>
+  </div>
+  <script>
+    if (sessionStorage.getItem('receiptAuth') === 'true') {
+      window.location.href = 'index.html';
+    }
+    function checkCode() {
+      var code = document.getElementById('accessCode').value;
+      if (code === '1993') {
+        sessionStorage.setItem('receiptAuth', 'true');
+        window.location.href = 'index.html';
+      } else {
+        document.getElementById('errorMsg').style.display = 'block';
+        document.getElementById('accessCode').value = '';
+        document.getElementById('accessCode').focus();
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>
