@@ -266,14 +266,12 @@
             <option value="Nationwide">Nationwide</option>
             <option value="Progressive">Progressive</option>
             <option value="National General">National General</option>
-            <option value="Alamance">Alamance</option>
+            <option value="Alamance Farmers">Alamance Farmers</option>
             <option value="Travelers">Travelers</option>
-            <option value="NC Grange Mutual">NC Grange Mutual</option>
-            <option value="Universal Property">Universal Property</option>
+            <option value="NC Grange">NC Grange</option>
             <option value="Dairyland">Dairyland</option>
-            <option value="Allstate">Allstate</option>
             <option value="Foremost">Foremost</option>
-            <option value="JSA">JSA</option>
+            <option value="Hagerty">Hagerty</option>
             <option value="NCJUA">NCJUA</option>
             <option value="Other">Other</option>
           </select>
@@ -480,19 +478,22 @@
   }
 
   function getCompanyLogoUrl(company) {
-    switch (company) {
-      case 'Nationwide':        return 'https://i.imgur.com/GWZBW1W.png';
-      case 'Progressive':       return 'https://github.com/BillLayne/bill-layne-images/blob/main/logos/Progressive%20Logo.png?raw=true';
-      case 'National General':  return 'https://i.imgur.com/nZZmaLh.png';
-      case 'Alamance':          return 'https://i.imgur.com/inn1Sog.png';
-      case 'Travelers':         return 'https://i.imgur.com/I6ONc0K.png';
-      case 'NC Grange Mutual':  return 'https://github.com/BillLayne/bill-layne-images/blob/main/logos/NC%20Grange%20Logo.png?raw=true';
-      case 'Universal Property': return 'https://i.imgur.com/otPRl9b.png';
-      case 'Foremost':          return 'https://github.com/BillLayne/bill-layne-images/blob/main/logos/Foremost%20Insurance.jpg?raw=true';
-      case 'JSA':               return 'https://github.com/BillLayne/bill-layne-images/blob/main/logos/JSA%20LOGO.png?raw=true';
-      case 'NCJUA':             return 'https://github.com/BillLayne/bill-layne-images/blob/main/logos/ncjua%20LOGO.png?raw=true';
-      default:                  return 'https://i.imgur.com/lxu9nfT.png';
-    }
+    const companyLogos = {
+      'Hagerty': 'https://i.imgur.com/0UyINHi.png',
+      'Alamance Farmers': 'https://i.imgur.com/S8BVnvs.png',
+      'Alamance': 'https://i.imgur.com/S8BVnvs.png',
+      'NC Grange': 'https://i.imgur.com/Fesnkng.png',
+      'NC Grange Mutual': 'https://i.imgur.com/Fesnkng.png',
+      'Travelers': 'https://i.imgur.com/m6wsO1p.png',
+      'Progressive': 'https://i.imgur.com/7N1vfo0.png',
+      'National General': 'https://i.imgur.com/HF8oPAF.png',
+      'Nationwide': 'https://i.imgur.com/Mv5V7tV.png',
+      'NCJUA': 'https://i.imgur.com/oSJj6ZW.png',
+      'Dairyland': 'https://i.imgur.com/1VkIvxv.png',
+      'Foremost': 'https://i.imgur.com/rHIo4r5.jpg'
+    };
+
+    return companyLogos[company] || 'https://i.imgur.com/lxu9nfT.png';
   }
 
   function showStatus(message, type) {
